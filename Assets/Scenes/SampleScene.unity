@@ -179,7 +179,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &166835953
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -245,6 +245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  jump: 300
+  isJumping: 0
 --- !u!95 &166835956
 Animator:
   serializedVersion: 4
@@ -294,7 +296,7 @@ GameObject:
   - component: {fileID: 370092341}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
