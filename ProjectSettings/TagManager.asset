@@ -51,6 +51,9 @@ TagManager:
   - name: Ground
     uniqueID: 4066325101
     locked: 0
+  - name: Player
+    uniqueID: 1541525091
+    locked: 0
   - name: Fog_Back_1
     uniqueID: 1421109489
     locked: 0
