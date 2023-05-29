@@ -176,7 +176,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -221,7 +221,7 @@ SpriteRenderer:
   m_SortingLayerID: 1541525091
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: a58ad3b9bc378f346af3f92cb7722f07, type: 3}
+  m_Sprite: {fileID: -909850269, guid: d61de74c33c08bd40a3f374c8900f8fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -257,7 +257,7 @@ Animator:
   m_GameObject: {fileID: 166835949}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b65a911a8a135cd40b6b4eeb3da17f98, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -280,8 +280,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00017118454, y: -0.00034753483}
-  m_Size: {x: 0.9927475, y: 1.9972196}
+  m_Offset: {x: 0, y: -0.09555721}
+  m_Size: {x: 1.144624, y: 1.8264022}
   m_Direction: 0
 --- !u!1 &330543218
 GameObject:
