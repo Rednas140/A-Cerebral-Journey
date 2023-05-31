@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public Animator animator;
 
     public float speed;
     public float jump;
@@ -25,6 +26,8 @@ public class PlayerScript : MonoBehaviour
     {
         inputHorizontal = Input.GetAxis("Horizontal");
         inputJump = Input.GetButtonDown("Jump");
+
+        animator.SetFloat("PlayerSpeed", Mathf.Abs(inputHorizontal));
 
         if (inputJump && isJumping == false)
         {
@@ -55,7 +58,8 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Ground")) 
         {
             isJumping = false;
-        } 
+            animator.SetBool("IsJumping", false);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -63,6 +67,7 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isJumping = true;
+            animator.SetBool("IsJumping", true);
         }
     }
 

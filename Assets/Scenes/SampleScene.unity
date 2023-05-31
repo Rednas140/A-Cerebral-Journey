@@ -178,7 +178,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &166835953
 SpriteRenderer:
@@ -244,9 +244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7021df9699f0848ab3007d11e2a0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 166835956}
   speed: 7
   jump: 300
-  isJumping: 0
 --- !u!95 &166835956
 Animator:
   serializedVersion: 4
