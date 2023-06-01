@@ -55,7 +55,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground")) 
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Platform")) 
         {
             isJumping = false;
             animator.SetBool("IsJumping", false);
@@ -64,7 +64,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Platform"))
         {
             isJumping = true;
             animator.SetBool("IsJumping", true);
