@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rb;
     public Animator animator;
 
-    public float speed;
+    public static float speed = 3f;
     public float jump;
 
     private bool isJumping;
