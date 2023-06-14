@@ -11,14 +11,18 @@ public class NPCScript : MonoBehaviour
     private readonly float waitTime = 2.0f;
     private float timer = 0.0f;
     private Canvas interactPrompt;
+    private Canvas dialoguePrompt;
     private bool closeToNpc;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
-        interactPrompt = gameObject.transform.GetChild(0).GetComponent<Canvas>(); ;
+        interactPrompt = gameObject.transform.GetChild(0).GetComponent<Canvas>();
+        dialoguePrompt = gameObject.transform.GetChild(2).GetComponent<Canvas>();
         interactPrompt.enabled = false;
+        dialoguePrompt.enabled = false;
+
     }
 
     // Update is called once per frame
@@ -38,9 +42,17 @@ public class NPCScript : MonoBehaviour
         {
             if (PlayerLevel.MaxLevel >= PlayerLevel.CurrentLevel) 
             {
+                dialoguePrompt.enabled = true;
+                interactPrompt.enabled = false;
                 PlayerLevel.CurrentLevel++;
                 PlayerScript.speed = PlayerScript.speed + 2f;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && closeToNpc) 
+        {
+            interactPrompt.enabled = true;
+            dialoguePrompt.enabled = false;
         }
     }
 
@@ -59,6 +71,7 @@ public class NPCScript : MonoBehaviour
         {
             interactPrompt.enabled = false;
             closeToNpc = false;
+            dialoguePrompt.enabled = false;
         }
     }
 }
