@@ -25,6 +25,16 @@ public class PlayerScript : MonoBehaviour
 
     void Update() 
     {
+        if (canMove == true)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else if(canMove == false)
+        {
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
         inputHorizontal = Input.GetAxis("Horizontal");
         inputJump = Input.GetButtonDown("Jump");
 
@@ -32,7 +42,7 @@ public class PlayerScript : MonoBehaviour
 
         canMove = Dialogue.isTalking;
 
-        if (inputJump && isJumping == false && !canMove)
+        if (inputJump && isJumping == false)
         {
             rb.AddForce(new Vector2(rb.velocity.x, jump));
         }
@@ -41,7 +51,7 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate() 
     {
 
-        if (inputHorizontal != 0 && !canMove)
+        if (inputHorizontal != 0)
         {
             rb.velocity = new Vector2(speed * inputHorizontal, rb.velocity.y);
         }

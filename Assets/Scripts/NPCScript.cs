@@ -15,6 +15,7 @@ public class NPCScript : MonoBehaviour
     private bool closeToNpc;
     private bool talkedTo = false;
     private int idleAnimation;
+    public bool areTalking;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,8 @@ public class NPCScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        areTalking = Dialogue.isTalking;
+
         timer += Time.deltaTime;
 
         if (timer > waitTime)
@@ -40,7 +43,7 @@ public class NPCScript : MonoBehaviour
             timer -= waitTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && closeToNpc && !talkedTo) 
+        if (Input.GetKeyDown(KeyCode.E) && closeToNpc && !areTalking) 
         {
             if (PlayerLevel.MaxLevel >= PlayerLevel.CurrentLevel) 
             {
@@ -48,8 +51,12 @@ public class NPCScript : MonoBehaviour
                 gameObject.transform.GetChild(2).GetChild(0).GetComponent<Dialogue>().StartDialogue();
                 interactPrompt.enabled = false;
                 talkedTo = true;
-                PlayerLevel.CurrentLevel++;
-                PlayerScript.speed += 2f;
+
+                if (!talkedTo)
+                {
+                    PlayerLevel.CurrentLevel++;
+                    PlayerScript.speed += 2f;
+                }
             }
         }
 

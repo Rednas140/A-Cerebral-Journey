@@ -29,7 +29,6 @@ public class Dialogue : MonoBehaviour
 
             else 
             {
-                isTalking = false;
                 StopAllCoroutines();
                 textComponent.text = lines[index];
             }   
@@ -68,6 +67,7 @@ public class Dialogue : MonoBehaviour
         }
         else{
             gameObject.SetActive(false);
+            isTalking = false;
         }
     }
 }
