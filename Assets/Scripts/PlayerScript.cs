@@ -15,6 +15,7 @@ public class PlayerScript : MonoBehaviour
     private float inputHorizontal;
     private bool inputJump;
     private bool facingRight = true;
+    public bool canMove;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,9 @@ public class PlayerScript : MonoBehaviour
 
         animator.SetFloat("PlayerSpeed", Mathf.Abs(inputHorizontal));
 
-        if (inputJump && isJumping == false)
+        canMove = Dialogue.isTalking;
+
+        if (inputJump && isJumping == false && !canMove)
         {
             rb.AddForce(new Vector2(rb.velocity.x, jump));
         }
@@ -37,7 +40,8 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate() 
     {
-        if (inputHorizontal != 0)
+
+        if (inputHorizontal != 0 && !canMove)
         {
             rb.velocity = new Vector2(speed * inputHorizontal, rb.velocity.y);
         }

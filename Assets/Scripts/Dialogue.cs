@@ -9,18 +9,18 @@ public class Dialogue : MonoBehaviour
     public string[] lines;
     public float textSpeed;
     private int index;
+    public static bool isTalking;
 
     // Start is called before the first frame update
     void Start()
     {
         textComponent.text = string.Empty;
-        StartDialogue();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space)) 
         {
             if (textComponent.text == lines[index])
             {
@@ -29,16 +29,25 @@ public class Dialogue : MonoBehaviour
 
             else 
             {
+                isTalking = false;
                 StopAllCoroutines();
                 textComponent.text = lines[index];
             }   
         } 
     }
 
-    void StartDialogue() 
+    public void StartDialogue() 
     {
+        textComponent.text = string.Empty;
+        isTalking = true;
         index = 0;
-        StartCoroutine(TypeLine());    }
+
+        if (!gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(true);
+        }
+        StartCoroutine(TypeLine());    
+    }
 
     IEnumerator TypeLine() 
     {

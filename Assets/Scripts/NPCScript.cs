@@ -14,7 +14,7 @@ public class NPCScript : MonoBehaviour
     private Canvas dialoguePrompt;
     private bool closeToNpc;
     private bool talkedTo = false;
-    private int hashDefault;
+    private int idleAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class NPCScript : MonoBehaviour
         dialoguePrompt = gameObject.transform.GetChild(2).GetComponent<Canvas>();
         interactPrompt.enabled = false;
         dialoguePrompt.enabled = false;
-        hashDefault = Animator.StringToHash("idle_npc");
+        idleAnimation = Animator.StringToHash("idle_npc");
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class NPCScript : MonoBehaviour
 
         if (timer > waitTime)
         {
-            animator.Play(hashDefault, -1, 0f);
+            animator.Play(idleAnimation, -1, 0f);
 
             // Remove the recorded 2 seconds.
             timer -= waitTime;
@@ -45,6 +45,7 @@ public class NPCScript : MonoBehaviour
             if (PlayerLevel.MaxLevel >= PlayerLevel.CurrentLevel) 
             {
                 dialoguePrompt.enabled = true;
+                gameObject.transform.GetChild(2).GetChild(0).GetComponent<Dialogue>().StartDialogue();
                 interactPrompt.enabled = false;
                 talkedTo = true;
                 PlayerLevel.CurrentLevel++;
