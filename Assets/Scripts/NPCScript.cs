@@ -50,13 +50,13 @@ public class NPCScript : MonoBehaviour
                 dialoguePrompt.enabled = true;
                 gameObject.transform.GetChild(2).GetChild(0).GetComponent<Dialogue>().StartDialogue();
                 interactPrompt.enabled = false;
-                talkedTo = true;
 
                 if (!talkedTo)
                 {
                     PlayerLevel.CurrentLevel++;
-                    PlayerScript.speed += 2f;
+                    PlayerScript.speed += 1f;
                 }
+                talkedTo = true;
             }
         }
 

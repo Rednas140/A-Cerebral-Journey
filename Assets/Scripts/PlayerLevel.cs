@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 public class PlayerLevel : MonoBehaviour
 {
-    public static int MaxLevel = 5;
+    public static int MaxLevel = 4;
     public static int CurrentLevel = 1;
     private Light2D li;
     public int lightSize = 2;
